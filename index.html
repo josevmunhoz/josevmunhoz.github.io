@@ -6,10 +6,11 @@
     <title>José Victor Munhoz Oki - Developer Portfolio</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --background-color: #f4f4f4;
-            --text-color: #333;
+            --primary-color: #1a73e8;  /* More vibrant blue */
+            --secondary-color: #34a853;  /* Complementary green */
+            --background-color: #f0f2f5;  /* Softer background */
+            --text-color: #202124;  /* Google-inspired dark gray */
+            --card-background: #ffffff;  /* Pure white for cards */
         }
 
         * {
@@ -18,18 +19,18 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
+       body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            letter-spacing: -0.02em;
         }
 
         .container {
-            width: 80%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            padding: 2rem 1rem;
         }
 
         .header {
@@ -52,8 +53,8 @@
         }
 
         .header-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
         }
 
         .header-content p {
@@ -62,11 +63,14 @@
         }
 
         .section {
-            background-color: white;
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background-color: var(--card-background);
+            border: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
         }
 
         .section h2 {
@@ -83,11 +87,15 @@
         }
 
         .skill-tag, .project-tag {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            background-color: rgba(var(--secondary-color), 0.1);
+            color: var(--secondary-color);
+            border: 1px solid rgba(var(--secondary-color), 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover, .project-tag:hover {
+            background-color: rgba(var(--secondary-color), 0.2);
+            transform: scale(1.05);
         }
 
         .footer {
@@ -105,20 +113,63 @@
         }
 
         .social-links a {
-            color: white;
+            position: relative;
             text-decoration: none;
-            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .github-graph {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .github-graph img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .github-graph img:hover {
+            transform: scale(1.02);
+        }
+        
         @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 1rem;
+            }
+        
             .header {
                 flex-direction: column;
                 text-align: center;
+                padding: 1.5rem;
             }
-
+        
             .header-img {
-                margin-right: 0;
-                margin-bottom: 1rem;
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
@@ -159,6 +210,12 @@ Outside of work, I'm an avid gamer and love traveling to beaches to recharge and
             <h2>Projects</h2>
             <div class="projects-list">
                 <span class="project-tag">mba-usp-esalq-tcc-cnn-model-comparisonmba-usp-esalq-tcc-cnn-model-comparison</span>
+            </div>
+
+            <h2>GitHub Contributions</h2>
+            <div class="github-graph">
+                <img src="https://github-readme-streak-stats.herokuapp.com/?user=josevmunhoz&theme=dark" alt="GitHub Streak" style="max-width: 100%; height: auto;">
+                <img src="https://github-readme-stats.vercel.app/api?username=josevmunhoz&show_icons=true&theme=dark" alt="GitHub Stats" style="max-width: 100%; height: auto;">
             </div>
         </section>
 
