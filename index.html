@@ -1,146 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José Victor Munhoz Oki - Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --background-dark: #121212;
-            --text-primary: #E0E0E0;
-            --accent-color: #BB86FC;
-            --secondary-color: #03DAC6;
-        }
+import React from 'react';
+import { 
+  GithubIcon, 
+  LinkedinIcon, 
+  MailIcon, 
+  CodeIcon, 
+  ServerIcon, 
+  CloudIcon,
+  DatabaseIcon,
+  NetworkIcon,
+  ActivityIcon,
+  BarChartIcon
+} from 'lucide-react';
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+const PersonalPage = () => {
+  const skills = [
+    { name: 'Python', Icon: CodeIcon }, 
+    { name: 'Spark', Icon: ServerIcon }, 
+    { name: 'Azure', Icon: CloudIcon }, 
+    { name: 'Data Engineering', Icon: DatabaseIcon }, 
+    { name: 'Cloud Architecture', Icon: NetworkIcon },
+    { name: 'Machine Learning', Icon: ActivityIcon },
+    { name: 'Big Data', Icon: BarChartIcon }
+  ];
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .container {
-            max-width: 700px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .name {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .tagline {
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .about {
-            text-align: center;
-            max-width: 600px;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .skills {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-tag {
-            background-color: rgba(187, 134, 252, 0.1);
-            color: var(--accent-color);
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(187, 134, 252, 0.3);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
-        }
-
-        @media (max-width: 600px) {
-            .name {
-                font-size: 2rem;
-            }
-            
-            .tagline {
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <img src="jose_morro_de_sp.jpg" alt="José Victor Munhoz Oki" class="profile-image">
+  return (
+    <div className="min-h-screen bg-neutral-900 text-neutral-100 flex items-center justify-center p-4">
+      <div className="max-w-xl w-full text-center bg-neutral-800 rounded-2xl shadow-2xl p-8 border border-neutral-700">
+        <div className="relative">
+          <img 
+            src="/path/to/jose_morro_de_sp.jpg" 
+            alt="José Victor Munhoz Oki" 
+            className="w-36 h-36 rounded-full object-cover mx-auto mb-6 border-4 border-blue-600 ring-4 ring-neutral-700"
+          />
+          <div className="absolute inset-0 rounded-full animate-pulse bg-blue-500/20 -z-10"></div>
+        </div>
         
-        <h1 class="name">José Victor Munhoz Oki</h1>
-        <p class="tagline">Data Engineer | Tech Lead | Problem Solver</p>
+        <h1 className="text-4xl font-bold text-blue-400 mb-2">
+          José Victor Munhoz Oki
+        </h1>
         
-        <p class="about">
-            Experienced Tech Lead specializing in data engineering and cloud solutions. 
-            Passionate about designing robust data architectures and driving innovative 
-            tech solutions. Bridging the gap between complex data challenges and 
-            elegant technological implementations.
+        <p className="text-xl text-blue-300 mb-6">
+          Data Engineer | Tech Lead | Problem Solver
         </p>
         
-        <div class="skills">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Spark</span>
-            <span class="skill-tag">Azure</span>
-            <span class="skill-tag">Data Engineering</span>
-            <span class="skill-tag">Cloud Architecture</span>
+        <p className="text-neutral-300 max-w-lg mx-auto mb-8 px-4">
+          Experienced Tech Lead specializing in data engineering and cloud solutions. 
+          Passionate about designing robust data architectures and driving innovative 
+          tech solutions. Bridging the gap between complex data challenges and 
+          elegant technological implementations.
+        </p>
+        
+        <div className="flex flex-wrap justify-center gap-2 mb-8 px-4">
+          {skills.map(({name, Icon}, index) => (
+            <div 
+              key={index} 
+              className="bg-neutral-700 text-blue-300 px-3 py-1 rounded-full text-sm hover:bg-neutral-600 transition-colors flex items-center gap-2"
+            >
+              <Icon size={16} className="text-blue-400" />
+              {name}
+            </div>
+          ))}
         </div>
         
-        <div class="social-links">
-            <a href="https://github.com/josevmunhoz" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/josemunhoz" target="_blank">LinkedIn</a>
-            <a href="mailto:josevmunhoz@gmail.com">Email</a>
+        <div className="flex justify-center space-x-6">
+          {[
+            { 
+              Icon: GithubIcon, 
+              href: "https://github.com/josevmunhoz",
+              label: "GitHub"
+            },
+            { 
+              Icon: LinkedinIcon, 
+              href: "https://linkedin.com/in/josemunhoz",
+              label: "LinkedIn"
+            },
+            { 
+              Icon: MailIcon, 
+              href: "mailto:josevmunhoz@gmail.com",
+              label: "Email"
+            }
+          ].map(({Icon, href, label}) => (
+            <a 
+              key={label}
+              href={href} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-neutral-400 hover:text-blue-400 transition-colors group"
+              aria-label={label}
+            >
+              <Icon 
+                size={24} 
+                className="group-hover:scale-110 transition-transform"
+              />
+            </a>
+          ))}
         </div>
+      </div>
     </div>
-</body>
-</html>
+  );
+};
+
+export default PersonalPage;
